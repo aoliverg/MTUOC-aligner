@@ -14,4 +14,6 @@ Once you have organized the files in such way, you can start the alignment proce
 
 ## 1. Alignment with Hunalign
 
+The programs MTUOC-aligner-hunalig.py (for the use in command line) and MTUOC-aligner-hunalign_GUI.py (with a Graphical User Interface, that is also provided as a Windows executable, MTUOC-aligner-hunalign_GUI.exe)
+
 ## 2. Alignment with SBERT
