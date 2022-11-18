@@ -16,4 +16,79 @@ Once you have organized the files in such way, you can start the alignment proce
 
 The programs MTUOC-aligner-hunalig.py (for the use in command line) and MTUOC-aligner-hunalign_GUI.py (with a Graphical User Interface, that is also provided as a Windows executable, MTUOC-aligner-hunalign_GUI.exe)
 
+### 1.1. Bilingual dictionaries for alignment with Hunalign
+
+To help to align we can use a bilingual dictionary. The bilingual dictionaries to use should be in the Hunalign format, that is: target_language_word @ source_language_word. For example, the English-Catalan dictionary would include the followint entries:
+
+```
+sionisme @ Zionism
+abacà @ abaca
+àbac @ abacus
+abampere @ abampere
+abandó @ abandonment
+abandonament @ abandonment
+reducció @ abatement
+abadia @ abbey
+...
+```
+
+You can download some alignment dictionaries created from the transfer dictionaries of the Apertium machine translation system from: [https://github.com/aoliverg/hunapertium](https://github.com/aoliverg/hunapertium). 
+
+The use of bilingual dictionaries is not compulsory, you can indicate an empty file (null.dic).
+
+
+### 1.2. Alignment with Hunalign using the command line
+
+To prepare the aligment script we use the program MTUOC-aligner-hunalign.py. To see the parameters use the -h option:
+
+```python3 MTUOC-aligner-hunalign.py -h 
+
+usage: MTUOC-aligner-hunalign.py [-h] --dirSL DIRSL --dirTL DIRTL --dirALI DIRALI --dictionary DICTIONARY --script
+                                 SCRIPT [--r1 R1] [--r2 R2] [--windows]
+
+A script to create the align script to be used with hunalign.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dirSL DIRSL         The input dir containing the segmented text files for the source language.
+  --dirTL DIRTL         The input dir containing the segmented text files for the target language.
+  --dirALI DIRALI       The output dir to save the aligned files.
+  --dictionary DICTIONARY
+                        The bilingual dictionary to use.
+  --script SCRIPT       The name of the alignment script.
+  --r1 R1               The first string for name replacement.
+  --r2 R2               The second string for name replacement.
+  --windows             Create a bat file for Windows.
+```
+
+Following the name of the directories in the examples above we can write:
+
+```
+python3 MTUOC-aligner-hunalign.py --dirSL text-eng --dirTL text-cat --dirALI alignments-eng-cat --dictionary hunapertium-en-ca.dic --script alignscript.sh --r1 eng.txt --r2 cat.txt
+```
+
+And a script with the alignment instructions will be created, containing several lines as the following:
+
+```
+timeout 5m ./hunalign hunapertium-en-ca.dic -utf -realign -text "text-eng/fileA-eng.txt" "text-cat/fileA-cat.txt" > "alignments-eng-cat/ali-fileA-eng.txt"
+```
+
+To run the alignment process, give execution permisions to this script and to hunalign:
+
+```
+chmod +x alignscript.sh
+chmod +x hunalig
+```
+
+Then run the script:
+
+```
+./alignscript.sh
+```
+
+And the alignment process will start. Once finished the alignment, select the alignments based on the confidence score as explained in section *3. Selecting the alignments*.
+  
 ## 2. Alignment with SBERT
+
+
+## 3. Selecting the alignments
