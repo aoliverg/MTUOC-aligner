@@ -67,6 +67,8 @@ Following the name of the directories in the examples above we can write:
 python3 MTUOC-aligner-hunalign.py --dirSL text-eng --dirTL text-cat --dirALI alignments-eng-cat --dictionary hunapertium-en-ca.dic --script alignscript.sh --r1 eng.txt --r2 cat.txt
 ```
 
+Further explanation of r1 and r2 paramenters should be given. These parameters indicates the endings of the file names that you should substract to make the source and target language file names equal. For example, if you have fileA-eng.txt and fileA-cat.txt you should indicate r1=-eng.txt and r2=-cat.txt to convert both names to fileA. **BUT** in this parameters you can not include hyphens (-), so you should indicate **--r1 eng.txt** and **--r2 cat.txt**.
+
 And a script with the alignment instructions will be created, containing several lines as the following:
 
 ```
@@ -87,7 +89,25 @@ Then run the script:
 ```
 
 And the alignment process will start. Once finished the alignment, select the alignments based on the confidence score as explained in section *3. Selecting the alignments*.
-  
+
+If you're working on Windows, dont forguet to use the option --windows and use a .bat extension for the script file. The created instructions will be slightly different:
+
+```
+hunalign.exe hunapertium-en-ca.dic -utf -realign -text t "text-eng/fileA-eng.txt" "text-cat/fileA-cat.txt" > "alignments-eng-cat/ali-fileA-eng.txt"
+```
+
+Then you can run the bat file (either in the terminal or double-clicking on it.
+
+### 1.2. Alignment with Hunalign using GUI version
+
+The GUI version offers an intuitive interface to perform the same process. Remember that this version is distributed both as Python script and as a Windows executable file. Once you run the program, the following interface will appear:
+
+![](https://github.com/aoliverg/imageswiki/blob/main/MTUOC-aligner-hunalign_GUI.PNG)
+
+Simply fill all the required information and press the button **Create script!**.
+
+Further explanation of Source lang. ending and Target lang. ending fields should be given. These parameters indicates the endings of the file names that you should substract to make the source and target language file names equal. For example, if you have fileA-eng.txt and fileA-cat.txt you should indicate -eng.txt and -cat.txt to convert both names to fileA. **BUT** in this parameters you can not include hyphens (-), so you should indicate **eng.txt** and **cat.txt**.
+
 ## 2. Alignment with SBERT
 
 
