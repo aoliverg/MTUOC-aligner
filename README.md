@@ -112,3 +112,42 @@ Further explanation of Source lang. ending and Target lang. ending fields should
 
 
 ## 3. Selecting the alignments
+
+The result of an alignment process, both with Hunalign or woth SBERT, is a directory containing a set of files with lines containing the source segment, the target segment and a confidence score, separated by tabulators. For example:
+
+```
+A man is suspected of a crime months perhaps after it has been committed.	De vegades es sospita que un home és l'autor d'un crim mesos després que s'hagi comès.	1.7361
+```
+
+Now we are interested in selecting all the segments with a higher confidence than a given one. To set this confidence, a visual exploration of several alignment files is advisable. To do so we can unse the program selectAlignments.py. If you use the option -h you'll get the information on how to use it:
+
+```
+python3 selectAlignments.py -h
+usage: selectAlignments.py [-h] -i INDIR -o OUTFILE -c CONFIDENCE
+
+A script to select aligments in a directory with a higher confidence than the given one into a single file. The
+alignment file should be a TSV file with three fields: source segment, target segment, confidence score.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INDIR, --inDir INDIR
+                        The input dir containing the hunalign alignments.
+  -o OUTFILE, --outFile OUTFILE
+                        The input fule.
+  -c CONFIDENCE, --confidence CONFIDENCE
+                        The minimun confidence (the output confidence will be highet tnar the one provided..
+```
+
+For example, the command:
+
+```
+python3 selectAlignments.py -i alignments-eng-cat -o selectedalignments.txt -c 0
+```
+
+will create the file selectedalignments.tx containing all the segment pairs with a confidence higher than 0 from the directory alignments-eng-cat.
+
+This program is also distributed with a Graphical User Inferface (selectAlignments_GUI.py) and as a Windows executable (selectAlignments_GUI.exe). Once started the program, the following interface will appear:
+
+![](https://github.com/aoliverg/imageswiki/blob/main/selectAlignments_GUI.PNG)
+
+Fill all the information and press the button **Go!**.
