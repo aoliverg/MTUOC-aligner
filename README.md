@@ -14,7 +14,9 @@ Once you have organized the files in such way, you can start the alignment proce
 
 ## 1. Alignment with Hunalign
 
-The programs MTUOC-aligner-hunalig.py (for the use in command line) and MTUOC-aligner-hunalign_GUI.py (with a Graphical User Interface, that is also provided as a Windows executable, MTUOC-aligner-hunalign_GUI.exe)
+The programs MTUOC-aligner-hunalig.py (for the use in command line) and MTUOC-aligner-hunalign_GUI.py (with a Graphical User Interface, that is also provided as a Windows executable, MTUOC-aligner-hunalign_GUI.exe).
+
+The compiled versions of hunalign for Linux (hunalign), Windows (hunalign.exe) and Mac (hunalignMAC) are provided. if you're using MAC rename hunalignMAC to hunalign. 
 
 ### 1.1. Bilingual dictionaries for alignment with Hunalign
 
@@ -79,7 +81,7 @@ To run the alignment process, give execution permisions to this script and to hu
 
 ```
 chmod +x alignscript.sh
-chmod +x hunalig
+chmod +x hunalign
 ```
 
 Then run the script:
@@ -112,7 +114,7 @@ To run the alignment process, give execution permisions to this script and to hu
 
 ```
 chmod +x alignscript.sh
-chmod +x hunalig
+chmod +x hunalign
 ```
 
 Then run the script:
