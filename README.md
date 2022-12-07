@@ -117,7 +117,64 @@ To align documents using SBERT you'll need the following programs:
 * MTUOC-aligner-SBERT.py (running in the command line) or MTUOC-aligner-SBERT_GUI.py (with a graphical user inferface). The GUI version is also available as a Windows executable (MTUOC-aligner-SBERT_GUI.exe).
 * MTUOC-bitext-mining.py: for the moment this script is only available as a Python v.3 script. Refer to the following requirements to run the script.
 
-##Requirements to run MTUOC-bitext-mining.py##
+**Requirements to run MTUOC-bitext-mining.py**
+
+This script is needed to run the alignment script created by MTUOC-aligner-SBERT. A Python v3 interpreter is needed. If you don't have one installed in your system you can download one from [www.python.org](www.python.org). Download the latest version 3 available for your operating system.
+
+Then, you can install the following dependences using pip:
+
+* faiss
+* faiss_cpu or faiss_gpu if you have access to GPU units
+* numpy
+* scikit_learn
+* sentence_transformers
+* torch
+* tqdm
+
+### 2.1. Alignment with Hunalign using the command line
+
+We can get the instructions for using the MTUOC-aligner-SBERT.py using the -h option:
+
+```
+python3 MTUOC-aligner-SBERT.py -h
+usage: MTUOC-aligner-SBERT.py [-h] --dirSL DIRSL --dirTL DIRTL --dirALI DIRALI --script SCRIPT [--r1 R1] [--r2 R2]
+
+A script to create the align script to be used with SBERT.
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --dirSL DIRSL    The input dir containing the segmented text files for the source language.
+  --dirTL DIRTL    The input dir containing the segmented text files for the target language.
+  --dirALI DIRALI  The output dir to save the aligned files.
+  --script SCRIPT  The name of the alignment script.
+  --r1 R1          The first string for name replacement.
+  --r2 R2          The second string for name replacement.
+```
+
+```
+python3 MTUOC-aligner-SBERT.py --dirSL text-eng --dirTL text-cat --dirALI alignments-eng-cat --script alignscript.sh --r1 eng.txt --r2 cat.txt
+```
+
+Further explanation of r1 and r2 paramenters should be given. These parameters indicates the endings of the file names that you should substract to make the source and target language file names equal. For example, if you have fileA-eng.txt and fileA-cat.txt you should indicate r1=-eng.txt and r2=-cat.txt to convert both names to fileA. **BUT** in this parameters you can not include hyphens (-), so you should indicate **--r1 eng.txt** and **--r2 cat.txt**.
+
+If you're working on Windows give a **.bat** extension to the alignment script. Once created the alignment script you can run it from the command line or double-clicking on it from the File Explorer.
+
+If you're working on Linux or Mac, don't forget to give execution permissions to the script before running it:
+
+```
+chmod +x alignscript.sh
+```
+
+### 1.2. Alignment with SBERT using GUI version
+
+The GUI version offers an intuitive interface to perform the same process. Remember that this version is distributed both as Python script and as a Windows executable file. Once you run the program, the following interface will appear:
+
+![](https://github.com/aoliverg/imageswiki/blob/main/MTUOC-aligner-SBERT_GUI.PNG)
+
+Simply fill all the required information and press the button **Create script!**.
+
+Further explanation of Source lang. ending and Target lang. ending fields should be given. These parameters indicates the endings of the file names that you should substract to make the source and target language file names equal. For example, if you have fileA-eng.txt and fileA-cat.txt you should indicate -eng.txt and -cat.txt to convert both names to fileA. **BUT** in this parameters you can not include hyphens (-), so you should indicate **eng.txt** and **cat.txt**.
+
 
 
 ## 3. Selecting the alignments
