@@ -1,7 +1,7 @@
 # MTUOC-aligner
 Scripts and programs to automatically align text files using Hunalign or SBERT.
 
-This repository offers a series of Python scripts and programs to facilitate the process of automatic text text alignment using Hunalign or SBERT. To align the text files, they should be segmented. You can use [MTUOC-segmenter](https://github.com/aoliverg/MTUOC-segmenter), or any other program to segment the files prior aligning them. If you plan to use Hunalign, don't forget to add the paragraph mark (\<p\>) when segmenting the files.
+This repository offers a series of Python scripts and programs to facilitate the process of automatic text text alignment using Hunalign or SBERT. To align the text files, they should be segmented. You can use [MTUOC-segmenter](https://github.com/aoliverg/MTUOC-segmenter), or any other program to segment the files prior aligning them. If you plan to use Hunalign, don't forget to add the paragraph mark (\<p\>). When segmenting the files. When using SBERT don't add the paragraph mark (\<p\>).
 
 Before starting the alignment procedure, organize the files in the following way.
 
@@ -109,6 +109,15 @@ Simply fill all the required information and press the button **Create script!**
 Further explanation of Source lang. ending and Target lang. ending fields should be given. These parameters indicates the endings of the file names that you should substract to make the source and target language file names equal. For example, if you have fileA-eng.txt and fileA-cat.txt you should indicate -eng.txt and -cat.txt to convert both names to fileA. **BUT** in this parameters you can not include hyphens (-), so you should indicate **eng.txt** and **cat.txt**.
 
 ## 2. Alignment with SBERT
+
+The alignment using [SBERT](https://www.sbert.net/) allow both the aligment of parallel document and the process of finding parallel segments in comparable documents, that is, documents that are not translations of each other but talk about a similar topic. This process is also very useful when aligning parallel documents that differ in some sections of the document.
+
+To align documents using SBERT you'll need the following programs:
+
+* MTUOC-aligner-SBERT.py (running in the command line) or MTUOC-aligner-SBERT_GUI.py (with a graphical user inferface). The GUI version is also available as a Windows executable (MTUOC-aligner-SBERT_GUI.exe).
+* MTUOC-bitext-mining.py: for the moment this script is only available as a Python v.3 script. Refer to the following requirements to run the script.
+
+##Requirements to run MTUOC-bitext-mining.py##
 
 
 ## 3. Selecting the alignments
