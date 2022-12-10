@@ -48,17 +48,18 @@ for r, d, f in os.walk(dir2):
         files2.append(file)
 sortida=codecs.open(outfile,"w",encoding="utf-8")
 for file1 in files1:
-    file2=file1.replace(r1,r2)
+    file1mod=file1.replace(r1,"")
     for file2 in files2:
-        print(file1,file2)
-        fullpath1=os.path.join(dir1,file1)
-        fullpath2=os.path.join(dir2,file2)
-        if not r1=="":
-            file3=file1.replace(r1,"")+".txt"
-        else:
-            file3=file1
-        fullpath3=os.path.join(dir3,file3)
-        cadena=pythonname+" MTUOC-bitext_mining.py \""+fullpath1+"\" \""+fullpath2+"\" \""+fullpath3+"\""
-        print(cadena)
-        sortida.write(cadena+"\n")
+        file2mod=file2.replace(r2,"")
+        if file2mod==file1mod:
+            fullpath1=os.path.join(dir1,file1)
+            fullpath2=os.path.join(dir2,file2)
+            if not r1=="":
+                file3=file1.replace(r1,"")+".txt"
+            else:
+                file3=file1
+            fullpath3=os.path.join(dir3,file3)
+            cadena=pythonname+" MTUOC-bitext_mining.py \""+fullpath1+"\" \""+fullpath2+"\" \""+fullpath3+"\""
+            print(cadena)
+            sortida.write(cadena+"\n")
     
