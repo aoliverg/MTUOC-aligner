@@ -36,6 +36,14 @@ abadia @ abbey
 
 You can download some alignment dictionaries created from the transfer dictionaries of the Apertium machine translation system from: [https://github.com/aoliverg/hunapertium](https://github.com/aoliverg/hunapertium). 
 
+For other languages you can convert the bilingual dictionaries from the project [MUSE](https://github.com/facebookresearch/MUSE#ground-truth-bilingual-dictionaries) with the provided script MUSE2Hunalign.py. For example to create the English-Turkish dictionary download the full version of the [MUSE's English-Trukish dictionary](https://dl.fbaipublicfiles.com/arrival/dictionaries/en-tr.txt) and run:
+
+```
+python3 MUSE2Hunalign.py en-tr.txt alidict-en-tr.txt
+```
+
+The alidict-en-tr.txt file is the alignment dictionary in the required format.
+
 The use of bilingual dictionaries is not compulsory, you can indicate an empty file (null.dic).
 
 
